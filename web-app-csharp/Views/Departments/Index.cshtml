@@ -1,0 +1,21 @@
+@model web_app_csharp.Models.Departments.DepartmentsListModel
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">DeptId</th>
+        <th scope="col">Name</th>
+        <th scope="col">Info</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var good in Model.Departments)
+    {
+        <tr>
+            <td>@good.DeptId</td>
+            <td>@good.Name</td>
+            <td>@(good.Info ?? "NULL")</td>
+        </tr>
+    }
+    </tbody>
+</table>

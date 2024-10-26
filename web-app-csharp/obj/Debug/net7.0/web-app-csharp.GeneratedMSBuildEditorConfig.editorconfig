@@ -16,12 +16,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/cauua/c#-projects/web-app-csharp/web-app-csharp
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/cauua/c\#-projects/web-app-csharp/web-app-csharp/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+[/Users/cauua/c\#-projects/web-app-csharp/web-app-csharp/Views/Departments/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVwYXJ0bWVudHMvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/cauua/c\#-projects/web-app-csharp/web-app-csharp/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+[/Users/cauua/c\#-projects/web-app-csharp/web-app-csharp/Views/Departments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVwYXJ0bWVudHMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/cauua/c\#-projects/web-app-csharp/web-app-csharp/Views/Goods/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR29vZHMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/cauua/c\#-projects/web-app-csharp/web-app-csharp/Views/Shared/Error.cshtml]

@@ -124,7 +124,7 @@ CREATE FUNCTION GetLargestOrderByProductName
     AS
 RETURN
 (
-    SELECT TOP 1 s.SalesId, s.CheckNo, s.Quantity, s.DateSale
+    SELECT TOP 1 s.SalesId, s.CheckNo, s.Quantity, s.DateSale, s.GoodId
     FROM Sales s
     JOIN Goods g ON s.GoodId = g.GoodId
     WHERE g.Name = @productName

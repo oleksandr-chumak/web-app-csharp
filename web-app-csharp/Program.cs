@@ -1,7 +1,13 @@
+using System.Reflection;
+using web_app_csharp.Attributes;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var assembly = Assembly.GetExecutingAssembly();
+builder.Services.RegisterServicesWithAttributes(assembly);
 
 var app = builder.Build();
 
@@ -22,6 +28,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Goods}/{action=Index}/{id?}");
 
 app.Run();

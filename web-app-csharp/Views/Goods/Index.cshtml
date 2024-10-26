@@ -1,0 +1,61 @@
+@model web_app_csharp.Models.Goods.GoodsListModel
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">GoodId</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Producer</th>
+        <th scope="col">DeptId</th>
+        <th scope="col">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var good in Model.Goods)
+    {
+        <tr>
+            <td>@good.GoodId</td>
+            <td>@good.Name</td>
+            <td>@good.Price</td>
+            <td>@good.Quantity</td>
+            <td>@good.Producer</td>
+            <td>@good.DeptId</td>
+            <td>@good.Description</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div class="row">
+    <p>
+        <span class="fw-bold">Count Of Goods Below Average Price: </span> @(Model.ContOfGoodsBelowAveragePrice)
+    </p>
+</div>
+
+
+@if (Model.LargestSaleForFirstGood != null)
+{
+    <h1>Largest Sale for @(Model.Goods.ToList()[0].Name)</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">SalesId</th>
+            <th scope="col">CheckNo</th>
+            <th scope="col">GoodId</th>
+            <th scope="col">DateSale</th>
+            <th scope="col">Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>@(Model.LargestSaleForFirstGood.SalesId)</td>
+            <td>@(Model.LargestSaleForFirstGood.CheckNo)</td>
+            <td>@(Model.LargestSaleForFirstGood.GoodId)</td>
+            <td>@(Model.LargestSaleForFirstGood.DateSale)</td>
+            <td>@(Model.LargestSaleForFirstGood.Quantity)</td>
+        </tr>
+        </tbody>
+    </table>
+}

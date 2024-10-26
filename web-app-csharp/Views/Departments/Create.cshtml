@@ -1,0 +1,34 @@
+@model web_app_csharp.Models.Departments.CreateDepartmentModel
+
+<h1 class="text-center mb-4">Create Department Form</h1>
+<div class="w-100 d-flex align-items-center justify-content-center">
+    <form class="w-100" style="max-width: 600px" method="post" asp-controller="Departments" asp-action="Create">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input asp-for="Name" value="@(Model.Name)" class="form-control" id="name" >
+            @if (Model.FieldErrors.ContainsKey(nameof(Model.Name)))
+            {
+                @foreach (var error in Model.FieldErrors[nameof(Model.Name)])
+                {
+                    <div class="invalid-feedback">
+                        @error
+                    </div>
+                }
+            }
+        </div>
+        <div class="mb-3">
+            <label for="info" class="form-label">Info</label>
+            <input asp-for="Info" value="@(Model.Info)" class="form-control" id="info" >
+            @if (Model.FieldErrors.ContainsKey(nameof(Model.Info)))
+            {
+                @foreach (var error in Model.FieldErrors[nameof(Model.Name)])
+                {
+                    <div class="invalid-feedback">
+                        @error
+                    </div>
+                }
+            }
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
