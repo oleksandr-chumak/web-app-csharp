@@ -1,0 +1,109 @@
+# Ignore .NET build files
+bin/
+obj/
+
+# Ignore Rider specific files
+.idea/
+.idea_modules/
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/assetWizard.xml
+.idea/html-report/
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+.idea/.idea_modules/
+.idea/scopes/
+.idea/codeStyles/
+
+# Ignore other IDE-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore build results
+*.dll
+*.pdb
+*.exe
+*.app
+*.apk
+*.cache
+*.ilk
+*.log
+*.map
+*.obj
+*.dat
+*.pyc
+*.pycache
+*.hprof
+*.idb
+*.DS_Store
+*.class
+*.ipch
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.tmp
+*.output
+*.log
+*.vspscc
+*.vssscc
+TestResults/
+bin/
+obj/
+
+# Ignore NuGet packages folder
+packages/
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Ignore Publish folder
+Publish/
+publish/
+
+# Ignore Rider specific files for caches and compiled files
+.idea/workspace.xml
+.idea/.idea_modules
+.idea/.riderdata
+.idea/artifacts
+.idea/assetWizard.xml
+
+# ASP.NET Core secrets
+secrets.json
+
+# Resharper files
+_ReSharper.*
+*.DotSettings.user
+resharper/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config files
+Desktop.ini
+AppData/
+$RECYCLE.BIN/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# Rider directories
+.idea/
+.idea_modules/
