@@ -2,7 +2,7 @@ namespace web_app_csharp.Entities;
 
 public class DepartmentEntity
 {
-    public int DeptId { get; set; }
+    public decimal DeptId { get; set; }
 
     public string Name { get; set; }
 

@@ -1,10 +1,8 @@
 using System.Data.SqlClient;
-using web_app_csharp.Attributes;
 using web_app_csharp.Entities;
 
 namespace web_app_csharp.Repositories.impl;
 
-[ScopedService]
 public class RawSqlSaleRepository : RawSqlRepository, ISaleRepository
 {
     public RawSqlSaleRepository(IConfiguration configuration) : base(configuration)

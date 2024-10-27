@@ -1,13 +1,20 @@
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using web_app_csharp.Attributes;
+using web_app_csharp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+var assembly = Assembly.GetExecutingAssembly();
+builder.Services.RegisterServicesWithAttributes(assembly);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var assembly = Assembly.GetExecutingAssembly();
-builder.Services.RegisterServicesWithAttributes(assembly);
 
 var app = builder.Build();
 

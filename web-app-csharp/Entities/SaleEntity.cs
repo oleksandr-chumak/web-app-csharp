@@ -10,5 +10,5 @@ public class SaleEntity
 
     public DateTime DateSale { get; set; }
 
-    public int Quantity { get; set; }
+    public int? Quantity { get; set; }
 }

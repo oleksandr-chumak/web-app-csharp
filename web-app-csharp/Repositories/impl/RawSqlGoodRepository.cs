@@ -1,10 +1,8 @@
 using System.Data.SqlClient;
-using web_app_csharp.Attributes;
 using web_app_csharp.Entities;
 
 namespace web_app_csharp.Repositories.impl;
 
-[ScopedService]
 public class RawSqlGoodRepository : RawSqlRepository, IGoodRepository
 {
     public RawSqlGoodRepository(IConfiguration configuration) : base(configuration)
@@ -25,7 +23,7 @@ public class RawSqlGoodRepository : RawSqlRepository, IGoodRepository
             {
                 GoodId = Convert.ToInt32(reader["GoodId"]),
                 Name = (string)reader["Name"],
-                Price = Convert.ToDecimal(reader["Price"]),
+                Price = Convert.ToDouble(reader["Price"]),
                 Quantity = Convert.ToInt32(reader["Quantity"]),
                 Producer = (string)reader["Producer"],
                 DeptId = Convert.ToInt32(reader["DeptId"]),
