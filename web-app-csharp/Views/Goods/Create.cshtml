@@ -1,0 +1,101 @@
+@using web_app_csharp.Utils
+@namespace web_app_csharp.Views.Shared.Components
+@model web_app_csharp.Models.Goods.CreateGoodModel
+
+<h1 class="text-center mb-4">Create Good Form</h1>
+<div class="w-100 d-flex align-items-center justify-content-center">
+    <form class="w-100" style="max-width: 600px" method="post" asp-controller="Goods" asp-action="Create">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input asp-for="Name" value="@(Model.Name)"
+                   class="form-control @(ModelErrorUtil.GetFieldClass(Model.FieldErrors, nameof(Model.Name), Model.Submitted))"
+                   id="name">
+            @if (Model.Submitted && ModelErrorUtil.IsFieldInvalid(Model.FieldErrors, nameof(Model.Name)))
+            {
+                @foreach (var error in Model.FieldErrors[nameof(Model.Name)])
+                {
+                    <div class="invalid-feedback d-block">
+                        @error
+                    </div>
+                }
+            }
+            @if (Model.Submitted && ModelErrorUtil.IsFieldValid(Model.FieldErrors, nameof(Model.Name)))
+            {
+                <div class="valid-feedback d-block">Looks good!</div>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input asp-for="Price" value="@(Model.Price)"
+                   class="form-control @(ModelErrorUtil.GetFieldClass(Model.FieldErrors, nameof(Model.Price), Model.Submitted))"
+                   id="price">
+            @if (Model.Submitted && ModelErrorUtil.IsFieldInvalid(Model.FieldErrors, nameof(Model.Price)))
+            {
+                @foreach (var error in Model.FieldErrors[nameof(Model.Price)])
+                {
+                    <div class="invalid-feedback d-block">
+                        @error
+                    </div>
+                }
+            }
+            @if (Model.Submitted && ModelErrorUtil.IsFieldValid(Model.FieldErrors, nameof(Model.Price)))
+            {
+                <div class="valid-feedback d-block">Looks good!</div>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="producer" class="form-label">Producer</label>
+            <input asp-for="Producer" value="@(Model.Producer)"
+                   class="form-control @(ModelErrorUtil.GetFieldClass(Model.FieldErrors, nameof(Model.Producer), Model.Submitted))"
+                   id="producer">
+            @if (Model.Submitted && ModelErrorUtil.IsFieldInvalid(Model.FieldErrors, nameof(Model.Producer)))
+            {
+                @foreach (var error in Model.FieldErrors[nameof(Model.Producer)])
+                {
+                    <div class="invalid-feedback d-block">
+                        @error
+                    </div>
+                }
+            }
+            @if (Model.Submitted && ModelErrorUtil.IsFieldValid(Model.FieldErrors, nameof(Model.Producer)))
+            {
+                <div class="valid-feedback d-block">Looks good!</div>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="deptId" class="form-label">Department Id</label>
+            <input asp-for="DeptId" value="@(Model.DeptId)" class="form-control" id="deptId">
+            @if (Model.Submitted && ModelErrorUtil.IsFieldInvalid(Model.FieldErrors, nameof(Model.DeptId)))
+            {
+                @foreach (var error in Model.FieldErrors[nameof(Model.DeptId)])
+                {
+                    <div class="invalid-feedback d-block">
+                        @error
+                    </div>
+                }
+            }
+            @if (Model.Submitted && ModelErrorUtil.IsFieldValid(Model.FieldErrors, nameof(Model.DeptId)))
+            {
+                <div class="valid-feedback d-block">Looks good!</div>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input asp-for="Description" value="@(Model.Description)" class="form-control" id="description">
+            @if (Model.Submitted && ModelErrorUtil.IsFieldInvalid(Model.FieldErrors, nameof(Model.Description)))
+            {
+                @foreach (var error in Model.FieldErrors[nameof(Model.Description)])
+                {
+                    <div class="invalid-feedback d-block">
+                        @error
+                    </div>
+                }
+            }
+            @if (Model.Submitted && ModelErrorUtil.IsFieldValid(Model.FieldErrors, nameof(Model.Description)))
+            {
+                <div class="valid-feedback d-block">Looks good!</div>
+            }
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

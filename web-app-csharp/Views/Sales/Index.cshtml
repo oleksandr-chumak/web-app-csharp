@@ -1,33 +1,37 @@
-@model web_app_csharp.Models.Departments.DepartmentsListModel
+@model web_app_csharp.Models.Sales.SalesListModel
 
-<a class="btn btn-primary mb-2" role="button" asp-action="Create" asp-controller="Departments">Create</a>
+<a class="btn btn-primary mb-2" role="button" asp-action="Create" asp-controller="Sales">Create</a>
 <table class="table table-striped">
     <thead>
     <tr>
-        <th scope="col">DeptId</th>
-        <th scope="col">Name</th>
-        <th scope="col">Info</th>
+        <th scope="col">SalesId</th>
+        <th scope="col">CheckNo</th>
+        <th scope="col">GoodId</th>
+        <th scope="col">DateSale</th>
+        <th scope="col">Quantity</th>
         <th scope="col">Actions</th>
     </tr>
     </thead>
     <tbody>
-    @foreach (var department in Model.Departments)
+    @foreach (var sale in Model.Sales)
     {
         <tr>
-            <td>@department.DeptId</td>
-            <td>@department.Name</td>
-            <td>@(department.Info ?? "NULL")</td>
+            <td>@sale.SalesId</td>
+            <td>@sale.CheckNo</td>
+            <td>@sale.GoodId</td>
+            <td>@sale.DateSale</td>
+            <td>@sale.Quantity</td>
             <td>
                 <div class="d-flex gap-2 align-items-center">
-                    <a asp-controller="Departments" asp-action="Update" asp-route-id="@(department.DeptId)" class="btn btn-primary d-flex align-items-center justify-content-center" role="button">
+                    <a asp-controller="Sales" asp-action="Update" asp-route-id="@(sale.SalesId)" class="btn btn-primary d-flex align-items-center justify-content-center" role="button">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                             <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
                         </svg>
                     </a>
                     <a class="btn btn-danger d-flex align-items-center justify-content-center" role="button"
-                       asp-controller="Departments"
+                       asp-controller="Sales"
                        asp-action="Delete"
-                       asp-route-id="@(department.DeptId)"
+                       asp-route-id="@(sale.SalesId)"
                        >
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>

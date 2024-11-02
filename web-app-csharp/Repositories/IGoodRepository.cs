@@ -1,10 +1,9 @@
 using web_app_csharp.Entities;
+using web_app_csharp.Interfaces;
 
 namespace web_app_csharp.Repositories;
 
-public interface IGoodRepository
+public interface IGoodRepository : ICrudRepository<GoodEntity>
 {
-    IEnumerable<GoodEntity> GetAll();
-
     int GetCountOfGoodsBelowAveragePrice();
 }

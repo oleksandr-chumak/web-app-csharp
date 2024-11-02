@@ -1,0 +1,86 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using web_app_csharp.Utils
+@model web_app_csharp.Models.Sales.UpdateSaleModel
+
+<h1 class="text-center mb-4">Update Sale With ID @(Model.SaleId)</h1>
+<div class="w-100 d-flex align-items-center justify-content-center">
+    <form class="w-100" style="max-width: 600px" novalidate method="post" asp-controller="Sales" asp-action="Update">
+        <div class="mb-3">
+            <label for="checkNo" class="form-label">Check Number</label>
+            <input asp-for="CheckNo" value="@(Model.CheckNo)"
+                   class="form-control @(ModelErrorUtil.GetFieldClass(Model.FieldErrors, nameof(Model.CheckNo), Model.Submitted))"
+                   id="checkNo">
+            @if (Model.Submitted && ModelErrorUtil.IsFieldInvalid(Model.FieldErrors, nameof(Model.CheckNo)))
+            {
+                @foreach (var error in Model.FieldErrors[nameof(Model.CheckNo)])
+                {
+                    <div class="invalid-feedback d-block">
+                        @error
+                    </div>
+                }
+            }
+            @if (Model.Submitted && ModelErrorUtil.IsFieldValid(Model.FieldErrors, nameof(Model.CheckNo)))
+            {
+                <div class="valid-feedback d-block">Looks good!</div>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="goodId" class="form-label">Good Id</label>
+            <input asp-for="GoodId" value="@(Model.GoodId)"
+                   class="form-control @(ModelErrorUtil.GetFieldClass(Model.FieldErrors, nameof(Model.GoodId), Model.Submitted))"
+                   id="goodId">
+            @if (Model.Submitted && ModelErrorUtil.IsFieldInvalid(Model.FieldErrors, nameof(Model.GoodId)))
+            {
+                @foreach (var error in Model.FieldErrors[nameof(Model.GoodId)])
+                {
+                    <div class="invalid-feedback d-block">
+                        @error
+                    </div>
+                }
+            }
+            @if (Model.Submitted && ModelErrorUtil.IsFieldValid(Model.FieldErrors, nameof(Model.GoodId)))
+            {
+                <div class="valid-feedback d-block">Looks good!</div>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="dateSale" class="form-label">Date Sale</label>
+            <input asp-for="DateSale" value="@(Model.DateSale.ToString("yyyy-MM-dd"))"
+                   class="form-control @(ModelErrorUtil.GetFieldClass(Model.FieldErrors, nameof(Model.DateSale), Model.Submitted))"
+                   id="dateSale">
+            @if (Model.Submitted && ModelErrorUtil.IsFieldInvalid(Model.FieldErrors, nameof(Model.DateSale)))
+            {
+                @foreach (var error in Model.FieldErrors[nameof(Model.DateSale)])
+                {
+                    <div class="invalid-feedback">
+                        @error
+                    </div>
+                }
+            }
+            @if (Model.Submitted && ModelErrorUtil.IsFieldValid(Model.FieldErrors, nameof(Model.DateSale)))
+            {
+                <div class="valid-feedback d-block">Looks good!</div>
+            }
+        </div>
+        <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input asp-for="Quantity" value="@(Model.Quantity)"
+                   class="form-control @(ModelErrorUtil.GetFieldClass(Model.FieldErrors, nameof(Model.Quantity), Model.Submitted))"
+                   id="quantity">
+            @if (Model.Submitted && ModelErrorUtil.IsFieldInvalid(Model.FieldErrors, nameof(Model.Quantity)))
+            {
+                @foreach (var error in Model.FieldErrors[nameof(Model.Quantity)])
+                {
+                    <div class="invalid-feedback">
+                        @error
+                    </div>
+                }
+            }
+            @if (Model.Submitted && ModelErrorUtil.IsFieldValid(Model.FieldErrors, nameof(Model.Quantity)))
+            {
+                <div class="valid-feedback d-block">Looks good!</div>
+            }
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

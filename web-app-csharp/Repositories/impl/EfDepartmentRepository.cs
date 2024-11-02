@@ -26,6 +26,24 @@ public class EfDepartmentRepository : IDepartmentRepository
             .ToList();
     }
 
+    public DepartmentEntity? GetById(decimal id)
+    {
+        var department = _context.Departments
+            .FirstOrDefault(d => d.DeptId == id);
+
+        if (department == null)
+        {
+            return null; 
+        }
+
+        return new DepartmentEntity
+        {
+            DeptId = department.DeptId,
+            Name = department.Name,
+            Info = department.Info
+        };
+    }
+
     public void Add(DepartmentEntity department)
     {
         var newDepartment = new Department
@@ -35,6 +53,40 @@ public class EfDepartmentRepository : IDepartmentRepository
         };
 
         _context.Departments.Add(newDepartment);
-        _context.SaveChanges(); 
+        _context.SaveChanges();
+    }
+
+    public void Update(DepartmentEntity model)
+    {
+        var existingDepartment = _context.Departments
+            .FirstOrDefault(d => d.DeptId == model.DeptId);
+
+        if (existingDepartment != null)
+        {
+            existingDepartment.Name = model.Name;
+            existingDepartment.Info = model.Info;
+
+            _context.SaveChanges();
+        }
+        else
+        {
+            throw new KeyNotFoundException($"Department with ID {model.DeptId} not found.");
+        }
+    }
+
+    public void DeleteById(int id)
+    {
+        var departmentToDelete = _context.Departments
+            .FirstOrDefault(d => d.DeptId == id);
+
+        if (departmentToDelete != null)
+        {
+            _context.Departments.Remove(departmentToDelete);
+            _context.SaveChanges();
+        }
+        else
+        {
+            throw new KeyNotFoundException($"Department with ID {id} not found.");
+        }
     }
 }

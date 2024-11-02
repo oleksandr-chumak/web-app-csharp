@@ -1,5 +1,5 @@
 using System.Data;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using web_app_csharp.Entities;
 
 namespace web_app_csharp.Repositories.impl;
@@ -29,8 +29,36 @@ public class RawSqlDepartmentRepository : RawSqlRepository, IDepartmentRepositor
         }
         
         reader.Close();
+        connection.Close();
         
         return departments;
+    }
+
+    public DepartmentEntity? GetById(decimal id)
+    {
+        var connection = CreateSqlConnection();
+        connection.Open();
+        var command = new SqlCommand("SELECT * FROM dbo.Departments WHERE DeptId = @id", connection);
+        command.Parameters.Add(new SqlParameter("@id", id));
+        var reader = command.ExecuteReader();
+
+        if (reader.Read())
+        {
+            var department = new DepartmentEntity()
+            {
+                DeptId = Convert.ToInt32(reader["DeptId"]),
+                Name = (string)reader["Name"],
+                Info = reader["Info"] is DBNull ? null : (string)reader["Info"]
+            };
+
+            reader.Close();
+            connection.Close();
+            return department;
+        }
+
+        reader.Close();
+        connection.Close(); 
+        return null; 
     }
 
     public void Add(DepartmentEntity department)
@@ -44,5 +72,36 @@ public class RawSqlDepartmentRepository : RawSqlRepository, IDepartmentRepositor
         command.Parameters.Add(new SqlParameter("@new_info", department.Info));
         
         command.ExecuteNonQuery();
+        connection.Close();
+    }
+
+    public void Update(DepartmentEntity model)
+    {
+        var connection = CreateSqlConnection();
+        connection.Open();
+
+        var command = new SqlCommand(
+            "UPDATE dbo.Departments SET Name = @new_name, Info = @new_info WHERE DeptId = @dept_id", 
+            connection
+        );
+
+        command.Parameters.Add(new SqlParameter("@dept_id", model.DeptId));
+        command.Parameters.Add(new SqlParameter("@new_name", model.Name));
+        command.Parameters.Add(new SqlParameter("@new_info", model.Info ?? (object)DBNull.Value)); // Handle null Info
+
+        command.ExecuteNonQuery();
+        connection.Close();
+    }
+
+    public void DeleteById(int id)
+    {
+        var connection = CreateSqlConnection();
+        connection.Open();
+
+        var command = new SqlCommand("DELETE FROM dbo.Departments WHERE DeptId = @dept_id", connection);
+        command.Parameters.Add(new SqlParameter("@dept_id", id));
+
+        command.ExecuteNonQuery();
+        connection.Close();
     }
 }
