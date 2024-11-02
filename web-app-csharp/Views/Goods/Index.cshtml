@@ -23,7 +23,7 @@
             <td>@good.Price</td>
             <td>@good.Quantity</td>
             <td>@good.Producer</td>
-            <td>@good.DeptId</td>
+            <td>@(good.DeptId != null ? good.DeptId : "NULL")</td>
             <td>@good.Description</td>
             <td>
                 <div class="d-flex gap-2 align-items-center">

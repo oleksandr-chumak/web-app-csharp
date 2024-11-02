@@ -39,19 +39,21 @@ public class DepartmentsController : Controller
     [HttpPost("create")]
     public IActionResult Create(CreateDepartmentModel viewModel)
     {
-        if (ModelState.IsValid)
+        viewModel.Submitted = true;
+        
+        if (!ModelState.IsValid)
         {
-            _departmentRepository.Add(new DepartmentEntity()
-            {
-                Name = viewModel.Name,
-                Info = viewModel.Info
-            });
-            return RedirectToAction("Index");
+            viewModel.FieldErrors = ModelErrorUtil.GetErrors(ModelState);
+            return View(viewModel);
         }
-
-        viewModel.FieldErrors = ModelErrorUtil.GetErrors(ModelState);
-
-        return View(viewModel);
+        
+        _departmentRepository.Add(new DepartmentEntity()
+        {
+            Name = viewModel.Name,
+            Info = viewModel.Info
+        });
+        
+        return RedirectToAction("Index");
     }
 
     [HttpGet("update/{id:int}")]

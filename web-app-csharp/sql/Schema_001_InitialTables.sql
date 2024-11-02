@@ -32,9 +32,9 @@ CREATE TABLE Workers
     WorkersId INT IDENTITY(1,1) NOT NULL PRIMARY KEY,  -- Auto-incremented worker identifier
     Name VARCHAR(20) NOT NULL,                          -- Worker name
     Address VARCHAR(40),                                -- Address
-    DeptId DECIMAL(4,0),                               -- Department identifier (foreign key)
+    DeptId DECIMAL(4,0) NULL,                           -- Department identifier (foreign key, nullable)
     Information NVARCHAR(20),                           -- Worker information
-    FOREIGN KEY (DeptId) REFERENCES Departments(DeptId) -- Foreign key reference
+    FOREIGN KEY (DeptId) REFERENCES Departments(DeptId) ON DELETE SET NULL -- Foreign key with ON DELETE SET NULL
 );
 
 -- Create the Goods table
@@ -47,7 +47,7 @@ CREATE TABLE Goods
     Producer VARCHAR(20),                               -- Producer of goods
     DeptId DECIMAL(4,0),                               -- Department identifier (foreign key)
     Description NVARCHAR(50),                           -- Description of the good
-    FOREIGN KEY (DeptId) REFERENCES Departments(DeptId) -- Foreign key reference
+    FOREIGN KEY (DeptId) REFERENCES Departments(DeptId) ON DELETE SET NULL  -- Foreign key reference
 );
 
 -- Create the Sales table
@@ -58,7 +58,7 @@ CREATE TABLE Sales
     GoodId INT NOT NULL,                               -- Good identifier (foreign key)
     DateSale DATE NOT NULL,                            -- Sale date
     Quantity INT,                                       -- Quantity sold
-    FOREIGN KEY (GoodId) REFERENCES Goods(GoodId)     -- Foreign key reference
+    FOREIGN KEY (GoodId) REFERENCES Goods(GoodId) ON DELETE CASCADE -- Foreign key with ON DELETE CASCADE
 );
 
 GO

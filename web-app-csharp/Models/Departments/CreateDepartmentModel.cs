@@ -12,5 +12,7 @@ public class CreateDepartmentModel
     [StringLength(40, ErrorMessage = "Department info can't be longer than 40 characters.")]
     public string Info { get; set; } = "";
 
+    public bool Submitted { get; set; }
+
     public Dictionary<string, List<string>> FieldErrors { get; set; } = new();
 }

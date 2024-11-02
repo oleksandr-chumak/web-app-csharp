@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using web_app_csharp.Models;
 using web_app_csharp.Models.Workers;
 using web_app_csharp.Repositories;
+using web_app_csharp.Services;
 using web_app_csharp.Utils;
 
 namespace web_app_csharp.Controllers;
@@ -12,11 +13,15 @@ public class WorkersController : Controller
     private readonly IWorkerRepository _workerRepository;
 
     private readonly IDepartmentRepository _departmentRepository;
+    
+    public event WorkerCreatedEventHandler WorkerCreated;
 
-    public WorkersController(IWorkerRepository workerRepository, IDepartmentRepository departmentRepository)
+    public WorkersController(IWorkerRepository workerRepository, IDepartmentRepository departmentRepository,  WorkerLoggingService loggingService)
     {
         _workerRepository = workerRepository;
         _departmentRepository = departmentRepository;
+        
+        WorkerCreated += loggingService.OnWorkerCreated;
     }
 
     public IActionResult Index()
@@ -57,13 +62,17 @@ public class WorkersController : Controller
             return View(model);
         }
 
-        _workerRepository.Add(new Worker()
+        var newWorker = new Worker()
         {
             Name = model.Name,
             Address = model.Address,
             DeptId = model.DeptId,
             Information = model.Information,
-        });
+        };
+
+        _workerRepository.Add(newWorker);
+        
+        WorkerCreated?.Invoke(this, newWorker);
 
         return RedirectToAction("Index");
     }

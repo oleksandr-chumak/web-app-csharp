@@ -30,7 +30,7 @@ public class GoodsController : Controller
         var goods = _goodRepository.GetAll();
         var countOfGoodsBelowAveragePrice = _goodRepository.GetCountOfGoodsBelowAveragePrice();
         var goodEntities = goods.ToList();
-        var goodName = goodEntities.ElementAt(0).Name;
+        var goodName = goodEntities.Count != 0 ? goodEntities[0].Name : null;
         var largestSaleForFirstGood = goodName != null
             ? _saleRepository.GetLargestSaleByGoodName(goodName)
             : null;
